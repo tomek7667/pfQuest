@@ -58,10 +58,9 @@ local function DrawLine(path,x,y,nx,ny,hl,minimap)
     xplayer, yplayer = xplayer * 100, yplayer * 100
 
     -- query minimap zoom/size data
-    local indoor = pfMap.minimap_indoor()
     local mZoom = pfMap.drawlayer:GetZoom()
     local mapID = pfMap:GetMapIDByName(GetRealZoneText())
-    local mapZoom = pfMap.minimap_zoom[indoor][mZoom]
+    local mapZoom = pfMap.minimap_zoom[pfMap.minimap_indoor()][mZoom]
     local mapWidth = pfMap.minimap_sizes[mapID] and pfMap.minimap_sizes[mapID][1] or 0
     local mapHeight = pfMap.minimap_sizes[mapID] and pfMap.minimap_sizes[mapID][2] or 0
 

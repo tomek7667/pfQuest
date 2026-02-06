@@ -945,8 +945,6 @@ function pfMap:UpdateMinimap()
     return
   end
 
-  -- Get indoor/outdoor state first to avoid zoom manipulation affecting subsequent calls
-  local indoor = minimap_indoor()
   local mZoom = pfMap.drawlayer:GetZoom()
   xPlayer, yPlayer = xPlayer * 100, yPlayer * 100
 
@@ -954,7 +952,7 @@ function pfMap:UpdateMinimap()
   this.xPlayer, this.yPlayer, this.mZoom = xPlayer, yPlayer, mZoom
   local color = pfQuest_config["spawncolors"] == "1" and "spawn" or "title"
   local mapID = pfMap:GetMapIDByName(GetRealZoneText())
-  local mapZoom = minimap_zoom[indoor][mZoom]
+  local mapZoom = minimap_zoom[minimap_indoor()][mZoom]
   local mapWidth = minimap_sizes[mapID] and minimap_sizes[mapID][1] or 0
   local mapHeight = minimap_sizes[mapID] and minimap_sizes[mapID][2] or 0
 
