@@ -945,18 +945,19 @@ function pfMap:UpdateMinimap()
     return
   end
 
+  local indoor = minimap_indoor()
   local mZoom = pfMap.drawlayer:GetZoom()
   xPlayer, yPlayer = xPlayer * 100, yPlayer * 100
 
   -- force refresh every second even without changed values, otherwise skip
-  if this.xPlayer == xPlayer and this.yPlayer == yPlayer and this.mZoom == mZoom then
+  if this.xPlayer == xPlayer and this.yPlayer == yPlayer and this.mZoom == mZoom and this.indoor == indoor then
     if ( this.tick or 1) > GetTime() then return else this.tick = GetTime() + 1 end
   end
 
-  this.xPlayer, this.yPlayer, this.mZoom = xPlayer, yPlayer, mZoom
+  this.xPlayer, this.yPlayer, this.mZoom, this.indoor = xPlayer, yPlayer, mZoom, indoor
   local color = pfQuest_config["spawncolors"] == "1" and "spawn" or "title"
   local mapID = pfMap:GetMapIDByName(GetRealZoneText())
-  local mapZoom = minimap_zoom[minimap_indoor()][mZoom]
+  local mapZoom = minimap_zoom[indoor][mZoom]
   local mapWidth = minimap_sizes[mapID] and minimap_sizes[mapID][1] or 0
   local mapHeight = minimap_sizes[mapID] and minimap_sizes[mapID][2] or 0
 
