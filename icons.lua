@@ -183,17 +183,14 @@ do -- /db track trainer
     -- Iterate through all units and assign icons to trainers based on their names
     if pfDB and pfDB["units"] and pfDB["units"]["loc"] then
       for unitId, unitName in pairs(pfDB["units"]["loc"]) do
-        if unitName and type(unitName) == "string" then
-          -- Check if this unit is a trainer (in meta.trainer list)
-          local isTrainer = pfDB["meta"] and pfDB["meta"]["trainer"] and pfDB["meta"]["trainer"][unitId]
-          
-          if isTrainer then
-            -- Try to match trainer name to profession
-            for pattern, icon in pairs(trainerIconMap) do
-              if string.find(unitName, pattern) then
-                pfDatabase.icons[unitName] = "Interface\\" .. icon
-                break
-              end
+        -- Check if this unit is a trainer with a valid name
+        if unitName and type(unitName) == "string" and 
+           pfDB["meta"] and pfDB["meta"]["trainer"] and pfDB["meta"]["trainer"][unitId] then
+          -- Try to match trainer name to profession and assign icon
+          for pattern, icon in pairs(trainerIconMap) do
+            if string.find(unitName, pattern) then
+              pfDatabase.icons[unitName] = "Interface\\" .. icon
+              break
             end
           end
         end
