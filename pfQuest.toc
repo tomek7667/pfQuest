@@ -2,7 +2,7 @@
 ## Title: |cff33ffccpf|cffffffffQuest
 ## Author: tomek7667
 ## Notes: Fork of A Questhelper and Database to 
-## Version: 8.0.3
+## Version: 8.0.4
 ## OptionalDeps: pfUI
 ## SavedVariables: pfQuest_questcache
 ## SavedVariablesPerCharacter: pfQuest_config, pfBrowser_fav, pfQuest_history, pfQuest_colors, pfQuest_server, pfQuest_track
