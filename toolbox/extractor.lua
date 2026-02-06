@@ -1571,6 +1571,7 @@ for id, settings in pairs(config.expansions) do
       local creature_flags = {
         [4] = "vendor",
         [8] = "flight",
+        [16] = "trainer",
         [32] = "spirithealer",
         [64] = "spirithealer",
         [128] = "innkeeper",
@@ -1582,7 +1583,7 @@ for id, settings in pairs(config.expansions) do
       }
 
       local tbc_flag_map = {
-        [4] = 128, [8] = 8192, [32] = 16384, [64] = 32768,
+        [4] = 128, [8] = 8192, [16] = 80, [32] = 16384, [64] = 32768,
         [128] = 65536, [256] = 20000, [2048] = 1048576,
         [4096] = 2097152, [8192] = 4194304, [16384] = 4096,
       }
