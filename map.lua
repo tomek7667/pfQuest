@@ -192,6 +192,16 @@ pfMap.nodes = {}
 pfMap.pins = {}
 pfMap.mpins = {}
 pfMap.drawlayer = Minimap
+
+-- Create an independent overlay frame for minimap pins
+-- This frame is NOT parented to Minimap, avoiding coordinate system issues
+pfMap.minimapOverlay = CreateFrame("Frame", "pfQuestMinimapOverlay", UIParent)
+pfMap.minimapOverlay:SetPoint("CENTER", Minimap, "CENTER", 0, 0)
+pfMap.minimapOverlay:SetWidth(Minimap:GetWidth())
+pfMap.minimapOverlay:SetHeight(Minimap:GetHeight())
+pfMap.minimapOverlay:SetFrameLevel(Minimap:GetFrameLevel() + 1)
+pfMap.minimapOverlay:SetFrameStrata("LOW")
+
 pfMap.unifiedcache = unifiedcache
 
 pfMap.minimap_indoor = minimap_indoor
@@ -1006,7 +1016,7 @@ function pfMap:UpdateMinimap()
 
         if display then
           if not pfMap.mpins[i] then
-            pfMap.mpins[i] = pfMap:BuildNode(nodename .. i, pfMap.drawlayer)
+            pfMap.mpins[i] = pfMap:BuildNode(nodename .. i, pfMap.minimapOverlay)
           end
 
           pfMap:UpdateNode(pfMap.mpins[i], node, color, "minimap", distance)
@@ -1019,7 +1029,7 @@ function pfMap:UpdateMinimap()
             pfMap.mpins[i]:Hide()
           else
             pfMap.mpins[i]:ClearAllPoints()
-            pfMap.mpins[i]:SetPoint("CENTER", pfMap.drawlayer, "CENTER", xPos, -yPos)
+            pfMap.mpins[i]:SetPoint("CENTER", pfMap.minimapOverlay, "CENTER", xPos, -yPos)
             pfMap.mpins[i]:Show()
           end
 
