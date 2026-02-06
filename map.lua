@@ -202,6 +202,11 @@ pfMap.minimapOverlay:SetHeight(Minimap:GetHeight())
 pfMap.minimapOverlay:SetFrameLevel(Minimap:GetFrameLevel() + 1)
 pfMap.minimapOverlay:SetFrameStrata("LOW")
 
+-- Initialize cache values to avoid unnecessary updates on first run
+pfMap.minimapOverlay.cachedWidth = Minimap:GetWidth()
+pfMap.minimapOverlay.cachedHeight = Minimap:GetHeight()
+pfMap.minimapOverlay.cachedLevel = Minimap:GetFrameLevel()
+
 pfMap.unifiedcache = unifiedcache
 
 pfMap.minimap_indoor = minimap_indoor
