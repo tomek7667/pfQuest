@@ -948,11 +948,7 @@ function pfMap:UpdateMinimap()
   local mZoom = pfMap.drawlayer:GetZoom()
   xPlayer, yPlayer = xPlayer * 100, yPlayer * 100
 
-  -- force refresh every second even without changed values, otherwise skip
-  if this.xPlayer == xPlayer and this.yPlayer == yPlayer and this.mZoom == mZoom then
-    if ( this.tick or 1) > GetTime() then return else this.tick = GetTime() + 1 end
-  end
-
+  -- Always update - removed caching to ensure icons move when player moves
   this.xPlayer, this.yPlayer, this.mZoom = xPlayer, yPlayer, mZoom
   local color = pfQuest_config["spawncolors"] == "1" and "spawn" or "title"
   local mapID = pfMap:GetMapIDByName(GetRealZoneText())
