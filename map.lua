@@ -1100,10 +1100,26 @@ pfMap:SetScript("OnUpdate", function()
   -- limit all map updates to once per .05 seconds
   if ( this.throttle or .2) > GetTime() then return else this.throttle = GetTime() + .05 end
 
-  -- keep minimap overlay synchronized with Minimap size and position
-  pfMap.minimapOverlay:SetWidth(Minimap:GetWidth())
-  pfMap.minimapOverlay:SetHeight(Minimap:GetHeight())
-  pfMap.minimapOverlay:SetFrameLevel(Minimap:GetFrameLevel() + 1)
+  -- keep minimap overlay synchronized with Minimap size, position, and frame level
+  -- only update when values actually change to avoid unnecessary function calls
+  local minimapWidth = Minimap:GetWidth()
+  local minimapHeight = Minimap:GetHeight()
+  local minimapLevel = Minimap:GetFrameLevel()
+  
+  if pfMap.minimapOverlay.cachedWidth ~= minimapWidth or 
+     pfMap.minimapOverlay.cachedHeight ~= minimapHeight or 
+     pfMap.minimapOverlay.cachedLevel ~= minimapLevel then
+    pfMap.minimapOverlay:SetWidth(minimapWidth)
+    pfMap.minimapOverlay:SetHeight(minimapHeight)
+    pfMap.minimapOverlay:SetFrameLevel(minimapLevel + 1)
+    pfMap.minimapOverlay:ClearAllPoints()
+    pfMap.minimapOverlay:SetPoint("CENTER", Minimap, "CENTER", 0, 0)
+    
+    -- cache the values
+    pfMap.minimapOverlay.cachedWidth = minimapWidth
+    pfMap.minimapOverlay.cachedHeight = minimapHeight
+    pfMap.minimapOverlay.cachedLevel = minimapLevel
+  end
 
   -- process node updates if required
   if pfMap.queue_update and pfMap.queue_update + .25 < GetTime() then
