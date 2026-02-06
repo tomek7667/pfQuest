@@ -160,4 +160,44 @@ do -- /db track trainer
   pfDatabase:AddCustomIcon(16000, "Icons\\Trade_Tailoring", "Interface") -- World Master Tailoring Trainer
   -- Jewelcrafting Trainers (TBC)
   pfDatabase:AddCustomIcon(15465, "Icons\\INV_Misc_Gem_01", "Interface") -- World Jewelcrafting Trainer
+  
+  -- Auto-assign icons for trainers based on name pattern matching
+  -- This ensures that when real trainer NPCs are extracted, they get appropriate profession icons
+  do
+    local trainerIconMap = {
+      ["Alch"] = "Icons\\Trade_Alchemy",
+      ["Blacksmith"] = "Icons\\Trade_BlackSmithing",
+      ["Enchant"] = "Icons\\Trade_Engraving",
+      ["Engineer"] = "Icons\\Trade_Engineering",
+      ["Cook"] = "Icons\\INV_Misc_Food_15",
+      ["First Aid"] = "Icons\\Spell_Holy_SealOfSacrifice",
+      ["Fish"] = "Icons\\Trade_Fishing",
+      ["Herb"] = "Icons\\Trade_Herbalism",
+      ["Leather"] = "Icons\\INV_Misc_ArmorKit_17",
+      ["Mining"] = "Icons\\Trade_Mining",
+      ["Skin"] = "Icons\\INV_Misc_Pelt_Wolf_01",
+      ["Tailor"] = "Icons\\Trade_Tailoring",
+      ["Jewelcraft"] = "Icons\\INV_Misc_Gem_01",
+    }
+    
+    -- Iterate through all units and assign icons to trainers based on their names
+    if pfDB and pfDB["units"] and pfDB["units"]["loc"] then
+      for unitId, unitName in pairs(pfDB["units"]["loc"]) do
+        if unitName and type(unitName) == "string" then
+          -- Check if this unit is a trainer (in meta.trainer list)
+          local isTrainer = pfDB["meta"] and pfDB["meta"]["trainer"] and pfDB["meta"]["trainer"][unitId]
+          
+          if isTrainer then
+            -- Try to match trainer name to profession
+            for pattern, icon in pairs(trainerIconMap) do
+              if string.find(unitName, pattern) then
+                pfDatabase.icons[unitName] = "Interface\\" .. icon
+                break
+              end
+            end
+          end
+        end
+      end
+    end
+  end
 end
