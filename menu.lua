@@ -203,6 +203,7 @@ do -- tracking menu
     {"repair", pfQuest_Loc["Repair"], pfDatabase.TrackMeta, true},
     {"spirithealer", pfQuest_Loc["Spirit Healer"], pfDatabase.TrackMeta, true},
     {"stablemaster", pfQuest_Loc["Stable Master"], pfDatabase.TrackMeta, true},
+    {"trainer", pfQuest_Loc["Trainer"], pfDatabase.TrackMeta, true},
     {"vendor", pfQuest_Loc["Vendor"], pfDatabase.TrackMeta, true},
     {"-"},
     {"journal", pfQuest_Loc["Quest Journal"], function(list, state) ToggleFrame(pfJournal) end},
