@@ -192,6 +192,21 @@ pfMap.nodes = {}
 pfMap.pins = {}
 pfMap.mpins = {}
 pfMap.drawlayer = Minimap
+
+-- Create an independent overlay frame for minimap pins
+-- This frame is NOT parented to Minimap, avoiding coordinate system issues
+pfMap.minimapOverlay = CreateFrame("Frame", "pfQuestMinimapOverlay", UIParent)
+pfMap.minimapOverlay:SetPoint("CENTER", Minimap, "CENTER", 0, 0)
+pfMap.minimapOverlay:SetWidth(Minimap:GetWidth())
+pfMap.minimapOverlay:SetHeight(Minimap:GetHeight())
+pfMap.minimapOverlay:SetFrameLevel(Minimap:GetFrameLevel() + 1)
+pfMap.minimapOverlay:SetFrameStrata("LOW")
+
+-- Initialize cache values to avoid unnecessary updates on first run
+pfMap.minimapOverlay.cachedWidth = Minimap:GetWidth()
+pfMap.minimapOverlay.cachedHeight = Minimap:GetHeight()
+pfMap.minimapOverlay.cachedLevel = Minimap:GetFrameLevel()
+
 pfMap.unifiedcache = unifiedcache
 
 pfMap.minimap_indoor = minimap_indoor
@@ -1006,7 +1021,7 @@ function pfMap:UpdateMinimap()
 
         if display then
           if not pfMap.mpins[i] then
-            pfMap.mpins[i] = pfMap:BuildNode(nodename .. i, pfMap.drawlayer)
+            pfMap.mpins[i] = pfMap:BuildNode(nodename .. i, pfMap.minimapOverlay)
           end
 
           pfMap:UpdateNode(pfMap.mpins[i], node, color, "minimap", distance)
@@ -1019,7 +1034,7 @@ function pfMap:UpdateMinimap()
             pfMap.mpins[i]:Hide()
           else
             pfMap.mpins[i]:ClearAllPoints()
-            pfMap.mpins[i]:SetPoint("CENTER", pfMap.drawlayer, "CENTER", xPos, -yPos)
+            pfMap.mpins[i]:SetPoint("CENTER", pfMap.minimapOverlay, "CENTER", xPos, -yPos)
             pfMap.mpins[i]:Show()
           end
 
@@ -1089,6 +1104,27 @@ pfMap:SetScript("OnUpdate", function()
 
   -- limit all map updates to once per .05 seconds
   if ( this.throttle or .2) > GetTime() then return else this.throttle = GetTime() + .05 end
+
+  -- keep minimap overlay synchronized with Minimap size, position, and frame level
+  -- only update when values actually change to avoid unnecessary function calls
+  local minimapWidth = Minimap:GetWidth()
+  local minimapHeight = Minimap:GetHeight()
+  local minimapLevel = Minimap:GetFrameLevel()
+  
+  if pfMap.minimapOverlay.cachedWidth ~= minimapWidth or 
+     pfMap.minimapOverlay.cachedHeight ~= minimapHeight or 
+     pfMap.minimapOverlay.cachedLevel ~= minimapLevel then
+    pfMap.minimapOverlay:SetWidth(minimapWidth)
+    pfMap.minimapOverlay:SetHeight(minimapHeight)
+    pfMap.minimapOverlay:SetFrameLevel(minimapLevel + 1)
+    pfMap.minimapOverlay:ClearAllPoints()
+    pfMap.minimapOverlay:SetPoint("CENTER", Minimap, "CENTER", 0, 0)
+    
+    -- cache the values
+    pfMap.minimapOverlay.cachedWidth = minimapWidth
+    pfMap.minimapOverlay.cachedHeight = minimapHeight
+    pfMap.minimapOverlay.cachedLevel = minimapLevel
+  end
 
   -- process node updates if required
   if pfMap.queue_update and pfMap.queue_update + .25 < GetTime() then
