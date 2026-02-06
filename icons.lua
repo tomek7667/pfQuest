@@ -123,41 +123,41 @@ do -- /db track chests
 end
 do -- /db track trainer
   -- Alchemy Trainers
-  pfDatabase:AddCustomIcon(5032, "Interface\\Icons\\Trade_Alchemy") -- World Alchemy Trainer
-  pfDatabase:AddCustomIcon(12020, "Interface\\Icons\\Trade_Alchemy") -- Moonglade Alchemy Trainer
+  pfDatabase:AddCustomIcon(5032, "Icons\\Trade_Alchemy", "Interface") -- World Alchemy Trainer
+  pfDatabase:AddCustomIcon(12020, "Icons\\Trade_Alchemy", "Interface") -- Moonglade Alchemy Trainer
   -- Blacksmithing Trainers
-  pfDatabase:AddCustomIcon(5033, "Interface\\Icons\\Trade_BlackSmithing") -- World Blacksmith Trainer
+  pfDatabase:AddCustomIcon(5033, "Icons\\Trade_BlackSmithing", "Interface") -- World Blacksmith Trainer
   -- Enchanting Trainers
-  pfDatabase:AddCustomIcon(5038, "Interface\\Icons\\Trade_Engraving") -- World Enchanting Trainer
-  pfDatabase:AddCustomIcon(16190, "Interface\\Icons\\Trade_Engraving") -- Expansion Enchanting Trainer
+  pfDatabase:AddCustomIcon(5038, "Icons\\Trade_Engraving", "Interface") -- World Enchanting Trainer
+  pfDatabase:AddCustomIcon(16190, "Icons\\Trade_Engraving", "Interface") -- Expansion Enchanting Trainer
   -- Engineering Trainers
-  pfDatabase:AddCustomIcon(5037, "Interface\\Icons\\Trade_Engineering") -- World Engineering Trainer
-  pfDatabase:AddCustomIcon(8676, "Interface\\Icons\\Trade_Engineering") -- World Gnome Engineering Trainer
-  pfDatabase:AddCustomIcon(8677, "Interface\\Icons\\Trade_Engineering") -- World Goblin Engineering Trainer
+  pfDatabase:AddCustomIcon(5037, "Icons\\Trade_Engineering", "Interface") -- World Engineering Trainer
+  pfDatabase:AddCustomIcon(8676, "Icons\\Trade_Engineering", "Interface") -- World Gnome Engineering Trainer
+  pfDatabase:AddCustomIcon(8677, "Icons\\Trade_Engineering", "Interface") -- World Goblin Engineering Trainer
   -- Cooking Trainers
-  pfDatabase:AddCustomIcon(5036, "Interface\\Icons\\INV_Misc_Food_15") -- World Cooking Trainer
+  pfDatabase:AddCustomIcon(5036, "Icons\\INV_Misc_Food_15", "Interface") -- World Cooking Trainer
   -- First Aid Trainers
-  pfDatabase:AddCustomIcon(2325, "Interface\\Icons\\Spell_Holy_SealOfSacrifice") -- Undead First Aid Trainer
-  pfDatabase:AddCustomIcon(5024, "Interface\\Icons\\Spell_Holy_SealOfSacrifice") -- World First Aid Trainer
+  pfDatabase:AddCustomIcon(2325, "Icons\\Spell_Holy_SealOfSacrifice", "Interface") -- Undead First Aid Trainer
+  pfDatabase:AddCustomIcon(5024, "Icons\\Spell_Holy_SealOfSacrifice", "Interface") -- World First Aid Trainer
   -- Fishing Trainers
-  pfDatabase:AddCustomIcon(4997, "Interface\\Icons\\Trade_Fishing") -- World Fishing Trainer
+  pfDatabase:AddCustomIcon(4997, "Icons\\Trade_Fishing", "Interface") -- World Fishing Trainer
   -- Herbalism Trainers
-  pfDatabase:AddCustomIcon(4998, "Interface\\Icons\\Trade_Herbalism") -- World Herbalism Trainer
-  pfDatabase:AddCustomIcon(16527, "Interface\\Icons\\Trade_Herbalism") -- Outland Herbalism Trainer
+  pfDatabase:AddCustomIcon(4998, "Icons\\Trade_Herbalism", "Interface") -- World Herbalism Trainer
+  pfDatabase:AddCustomIcon(16527, "Icons\\Trade_Herbalism", "Interface") -- Outland Herbalism Trainer
   -- Leatherworking Trainers
-  pfDatabase:AddCustomIcon(5040, "Interface\\Icons\\INV_Misc_ArmorKit_17") -- World Leatherworking Trainer
-  pfDatabase:AddCustomIcon(7525, "Interface\\Icons\\INV_Misc_ArmorKit_17") -- World Leatherworking Dragonscale Trainer
-  pfDatabase:AddCustomIcon(7526, "Interface\\Icons\\INV_Misc_ArmorKit_17") -- World Leatherworking Elemental Trainer
-  pfDatabase:AddCustomIcon(7528, "Interface\\Icons\\INV_Misc_ArmorKit_17") -- World Leatherworking Tribal Trainer
+  pfDatabase:AddCustomIcon(5040, "Icons\\INV_Misc_ArmorKit_17", "Interface") -- World Leatherworking Trainer
+  pfDatabase:AddCustomIcon(7525, "Icons\\INV_Misc_ArmorKit_17", "Interface") -- World Leatherworking Dragonscale Trainer
+  pfDatabase:AddCustomIcon(7526, "Icons\\INV_Misc_ArmorKit_17", "Interface") -- World Leatherworking Elemental Trainer
+  pfDatabase:AddCustomIcon(7528, "Icons\\INV_Misc_ArmorKit_17", "Interface") -- World Leatherworking Tribal Trainer
   -- Mining Trainers
-  pfDatabase:AddCustomIcon(2222, "Interface\\Icons\\Trade_Mining") -- Undead Mining Trainer
-  pfDatabase:AddCustomIcon(4999, "Interface\\Icons\\Trade_Mining") -- World Mining Trainer
-  pfDatabase:AddCustomIcon(12035, "Interface\\Icons\\Trade_Mining") -- Aerie Peak Mining Trainer
+  pfDatabase:AddCustomIcon(2222, "Icons\\Trade_Mining", "Interface") -- Undead Mining Trainer
+  pfDatabase:AddCustomIcon(4999, "Icons\\Trade_Mining", "Interface") -- World Mining Trainer
+  pfDatabase:AddCustomIcon(12035, "Icons\\Trade_Mining", "Interface") -- Aerie Peak Mining Trainer
   -- Skinning Trainers
-  pfDatabase:AddCustomIcon(6242, "Interface\\Icons\\INV_Misc_Pelt_Wolf_01") -- World Skinning Trainer
+  pfDatabase:AddCustomIcon(6242, "Icons\\INV_Misc_Pelt_Wolf_01", "Interface") -- World Skinning Trainer
   -- Tailoring Trainers
-  pfDatabase:AddCustomIcon(5041, "Interface\\Icons\\Trade_Tailoring") -- World Tailoring Trainer
-  pfDatabase:AddCustomIcon(16000, "Interface\\Icons\\Trade_Tailoring") -- World Master Tailoring Trainer
+  pfDatabase:AddCustomIcon(5041, "Icons\\Trade_Tailoring", "Interface") -- World Tailoring Trainer
+  pfDatabase:AddCustomIcon(16000, "Icons\\Trade_Tailoring", "Interface") -- World Master Tailoring Trainer
   -- Jewelcrafting Trainers (TBC)
-  pfDatabase:AddCustomIcon(15465, "Interface\\Icons\\INV_Misc_Gem_01") -- World Jewelcrafting Trainer
+  pfDatabase:AddCustomIcon(15465, "Icons\\INV_Misc_Gem_01", "Interface") -- World Jewelcrafting Trainer
 end
