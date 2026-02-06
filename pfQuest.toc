@@ -1,9 +1,8 @@
 ## Interface: 11200
 ## Title: |cff33ffccpf|cffffffffQuest
-## Author: Shagu
-## Notes: A Questhelper and Database
-## Notes-ruRU: Облегченный помощник заданий и база данных
-## Version: 7.0.1
+## Author: tomek7667
+## Notes: Fork of A Questhelper and Database to 
+## Version: 8.0.0
 ## OptionalDeps: pfUI
 ## SavedVariables: pfQuest_questcache
 ## SavedVariablesPerCharacter: pfQuest_config, pfBrowser_fav, pfQuest_history, pfQuest_colors, pfQuest_server, pfQuest_track
